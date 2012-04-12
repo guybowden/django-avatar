@@ -12,15 +12,10 @@ from django.db.models import get_app
 from django.core.exceptions import ImproperlyConfigured
 from django.conf import settings
 
-try:
-    notification = get_app('notification')
-except ImproperlyConfigured:
-    notification = None
+notification = None
 
 friends = False
-if 'friends' in settings.INSTALLED_APPS:
-    friends = True
-    from friends.models import Friendship
+
 
 def _get_next(request):
     """
